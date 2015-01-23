@@ -1,0 +1,33 @@
+ProgName  ：	1225_Astar.cpp
+InputName ：	1225.in
+OutputName：	1225.out
+TimeLimit ：	5s (+0.1s)
+-------------------------------------------------------------------
+Test Case	1	:	Accepted		Time: 4001 ms
+Test Case	2	:	Accepted		Time: 310 ms
+Test Case	3	:	Accepted		Time: 307 ms
+Test Case	4	:	Accepted		Time: 311 ms
+Test Case	5	:	Accepted		Time: 326 ms
+Test Case	6	:	Accepted		Time: 312 ms
+Test Case	7	:	Accepted		Time: 310 ms
+Test Case	8	:	Accepted		Time: 349 ms
+Test Case	9	:	Accepted		Time: 3967 ms
+Test Case	10	:	Accepted		Time: 3960 ms
+-------------------------------------------------------------------
+Total used time:	14153 ms
+Total case(s):	10
+Accepted case(s):	10
+-------------------------------------------------------------------
+
+-------------------------------------------------------------------
+1	/home/jiangzh/1225/data/puzzle0.ou
+2	/home/jiangzh/1225/data/puzzle1.ou
+3	/home/jiangzh/1225/data/puzzle2.ou
+4	/home/jiangzh/1225/data/puzzle3.ou
+5	/home/jiangzh/1225/data/puzzle4.ou
+6	/home/jiangzh/1225/data/puzzle5.ou
+7	/home/jiangzh/1225/data/puzzle6.ou
+8	/home/jiangzh/1225/data/puzzle7.ou
+9	/home/jiangzh/1225/data/puzzle8.ou
+10	/home/jiangzh/1225/data/puzzle9.ou
+-------------------------------------------------------------------
