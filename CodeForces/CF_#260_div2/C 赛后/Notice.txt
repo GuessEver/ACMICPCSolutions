@@ -1,0 +1,4 @@
+过了pretests
+但是被system test卡掉了
+
+一看代码就发现  21  行    h[i] * i    改成     (long long)h[i] * i    就A了
