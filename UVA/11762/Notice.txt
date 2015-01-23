@@ -1,0 +1,15 @@
+概率dp学习
+
+http://acm.uestc.edu.cn/bbs/read.php?tid=4396
+
+http://blog.csdn.net/morgan_xww/article/details/6776947
+
+
+
+
+
+本题题解
+
+http://blog.csdn.net/a601025382s/article/details/9815655
+http://www.cnblogs.com/little-w/p/3570257.html
+http://www.cnblogs.com/xiong-/p/3259559.html
