@@ -18,7 +18,7 @@ unsigned long long hash(char *p)
 {// 传说中大白书上的乱搞取模hash
 	unsigned long long res = 0;
 	for(int i = 0; p[i]; i++)
-		res = res * 137 + p[i]; // multiply a prime number
+		res = res * 137 + p[i]; // It's better to be a prime number
 	return res;
 }
 
