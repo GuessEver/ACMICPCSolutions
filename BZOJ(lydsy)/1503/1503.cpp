@@ -80,7 +80,7 @@ int kth(Treap *&p, int k)
 
 int main()
 {
-	srand(time(0));
+	//srand(time(0)); // Use it, and get "RE" at BZOJ
 	null = new Treap; root = null;
 	scanf("%d%d", &m, &Limit);
 	int delta = 0;

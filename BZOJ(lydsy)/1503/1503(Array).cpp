@@ -76,7 +76,7 @@ int kth(int &p, int k)
 
 int main()
 {
-	srand(time(0));
+	//srand(time(0)); // Use it, and get "RE" at BZOJ
 	scanf("%d%d", &m, &Limit);
 	int delta = 0;
 	while(m--)
