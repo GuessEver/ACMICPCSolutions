@@ -10,6 +10,8 @@ using std::pair;
 
 const int N = 1000000 + 10;
 const int mod = 1000000000 + 7;
+const unsigned long long MOD = mod; //1000000000000000007ll;
+const int B = 31; //317; //100591;
 
 int n, m, p;
 char s[N];
@@ -24,8 +26,8 @@ int mul(int x, int y)
 
 bool check(int same_len)
 {
-	int cc = same_len < 100 ? same_len : 100;
-	for(int i = 0, j = p - same_len; i < cc; i++, j++) if(s[i] != s[j]) return 0;
+	//int cc = same_len < 100 ? same_len : 100;
+	//for(int i = 0, j = p - same_len; i < cc; i++, j++) if(s[i] != s[j]) return 0;
 	return hash_head[same_len-1] == hash_tail[same_len-1];
 }
 
@@ -36,14 +38,14 @@ int main()
 	unsigned long long now = 0;
 	for(int i = 0; i < p; i++)
 	{
-		now = now * 31 + s[i] - 'a' + 1;
+		now = (now * B + s[i] - 'a' + 1) % MOD;
 		hash_head[i] = now;
 	}
 	now = 0; unsigned long long k = 1;
 	for(int i = p - 1; i >= 0; i--)
 	{
-		now = now + (s[i] - 'a' + 1) * k;
-		k *= 31;
+		now = (now + (s[i] - 'a' + 1) * k) % MOD;
+		k = (k * B) % MOD;
 		hash_tail[p-i-1] = now;
 	}
 	int cnt = 0, last = 0;
