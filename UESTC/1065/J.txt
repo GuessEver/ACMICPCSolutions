@@ -1,0 +1,6 @@
+J
+求出fail数组，我们发现fail[i]表示[0..i)区间内前后fail[i]个字符是一样的
+那么中间 mid = 2 * fail[i] - i重叠
+记cycle = (i - mid) / 2），即前后cycle个字符是一样的
+如果cycle在计算时候是整除的，并且 i % cycle == 0 && mid % cycle == 0 即表示循环节为cycle，否则为i
+

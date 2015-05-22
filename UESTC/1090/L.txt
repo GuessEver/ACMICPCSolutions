@@ -1,0 +1,10 @@
+L
+字符串先倍增，然后就是求[i, i+n)与[k, k+n)的LCP
+如果LCP == n，也就是相等，equal++;
+s[i+LCP] < s[k+LCP], smaller++;
+s[i+LCP] > s[k+LCP], bigger++;
+LCP呢二分验证就行
+有一个要注意的地方，求子串[l, r]的hash值，会用到快速幂，那么复杂度就会多一个log，就会T掉
+所以预处理P的几次幂，把log复杂度直接搞掉即可
+还有，多半要双hash（至于单hash我也不知道能不能过……）
+
