@@ -1,4 +1,4 @@
-// Solution: http://www.guessbug.tk/problem/UVa/12345
+// Solution: http://www.guessbug.com/problem/UVa/12345
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
