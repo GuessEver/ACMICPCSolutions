@@ -1,78 +1,54 @@
 #include <cstdio>
-#include <iostream>
-#include <iomanip>
-#include <cstring>
-#include <cstdlib>
-#include <string>
-#include <vector>
-#include <queue>
-#include <set>
-#include <map>
-#include <stack>
-#include <algorithm>
 #include <cmath>
-#include <deque>
-#include <ctime>
-#include <climits>
-#define INF 1000000007
-#define MP make_pair
-const double EPS = 1e-10, PI = acos(-1.0);
-using namespace std;
-typedef pair <int, int> P;
-typedef long long LL;
-typedef unsigned long long uLL;
-template<class T>
-inline T IN(T &num)
+#include <utility>
+#include <algorithm>
+using std::pair;
+
+const int N = 100000 + 10;
+
+int n, k, a[N];
+int rmq_min[N][30], rmq_max[N][30];
+void rmq_init()
 {
-    num = 0;
-    char c = getchar(), f = 0;
-    while(c != '-' && (c < '0' || c > '9')) c = getchar();
-    if(c == '-') f = 1, c = getchar();
-    while('0' <= c && c <= '9') num = num * 10 + c - '0', c = getchar();
-    if(f) num = -num;
-    return num;
+	for(int i = 1; i <= n; i++) rmq_min[i][0] = rmq_max[i][0] = a[i];
+	for(int j = 1; j <= log(1.0 * n) / log(2.0); j++)
+		for(int i = 1; i <= n + 1 - (1 << j); i++)
+		{
+			rmq_min[i][j] = std::min(rmq_min[i][j-1], rmq_min[i+(1<<(j-1))][j-1]);
+			rmq_max[i][j] = std::max(rmq_max[i][j-1], rmq_max[i+(1<<(j-1))][j-1]);
+		}
 }
-//------------------------   code   ---------------------------------//
-const int NUM = 100010;
-int n, k, a[NUM];
-struct node
+pair<int, int> rmq_query(int l, int r)
 {
-    int i, val;
-};
-deque<node> demx, demi;
+	int k = log(r - l + 1.0) / log(2.0);
+	int min = std::min(rmq_min[l][k], rmq_min[r-(1<<k)+1][k]);
+	int max = std::max(rmq_max[l][k], rmq_max[r-(1<<k)+1][k]);
+	return std::make_pair(min, max);
+}
+
 int main()
 {
-#ifdef ACM_TEST
-    freopen("in.txt", "r", stdin);
-//    freopen("in.txt", "w", stdout);
-#endif
-    LL i, j;
-    int T;
-    IN(T);
-    while(T--)
-    {
-        IN(n), IN(k);
-        for(i = 0; i < n; i++)
-            IN(a[i]);
-        a[n] = INF;
-        demx.clear(); demi.clear();
-        LL ans = 0;
-        for(i = j = 0; i < n; i++)
-        {
-            while(j < n)
-            {
-                while(!demx.empty() && demx.back().val < a[j]) demx.pop_back();
-                while(!demi.empty() && demi.back().val > a[j]) demi.pop_back();
-                demx.push_back((node) {j, a[j]});
-                demi.push_back((node) {j, a[j]});
-                if(demx.front().val - demi.front().val >= k) break;
-                j++;
-            }
-            ans += j - i ;
-            while(!demx.empty() && demx.front().i <= i) demx.pop_front();
-            while(!demi.empty() && demi.front().i <= i) demi.pop_front();
-        }
-        printf("%I64d\n", ans);
-    }
-    return 0;
+	int T; scanf("%d", &T);
+	while(T--)
+	{
+		scanf("%d%d", &n, &k);
+		for(int i = 1; i <= n; i++) scanf("%d", &a[i]);
+		rmq_init();
+		long long res = 0;
+		for(int i = 1; i <= n; i++)
+		{
+			int low = i, high = n, ans = low;
+			while(low <= high)
+			{
+				int mid = low + (high - low) / 2;
+				pair<int, int> tmp = rmq_query(i, mid);
+				if(tmp.second - tmp.first >= k) high = mid - 1;
+				else { low = mid + 1; ans = mid; }
+			}
+			//printf("%d %d\n", i, ans);
+			res += ans - i + 1;
+		}
+		printf("%lld\n", res);
+	}
+	return 0;
 }
