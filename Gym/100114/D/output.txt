@@ -1,0 +1,6 @@
+5
+2
+Ctrl+5
+Ctrl+6
+Ctrl+9
+Ctrl+10
